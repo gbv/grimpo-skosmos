@@ -49,4 +49,4 @@ docker compose up --force-recreate
 
 The Skosmos web interface is by default accessable under <http://localhost:9090/> and the importer at <http://localhost:5020/>. 
 
-The skript `init.sh` takes a list of terminologies with their uri and a download link in [JSKOS format](https://gbv.github.io/jskos/), see `terminologies.json` for an example, as first argument and registers them. It downloads the vocabularies from the given sources and adds them to the triple store using the importer. Afterwards the skirpt extends the `config-docker-compose.ttl` with the vocabulary information to make the (J)SKOS-vocabularies accessable by SKOSMOS.
+The skript `init.sh` takes a list of terminologies with their uri and a download link in [JSKOS format](https://gbv.github.io/jskos/), see `terminologies.json` for an example, as first argument and registers them. It passes the download link to the importer, who downloads and adds the vocabularies to the triple store. Afterwards the skirpt extends the `config-docker-compose.ttl` with the vocabulary information to make the (J)SKOS-vocabularies accessable by SKOSMOS.
