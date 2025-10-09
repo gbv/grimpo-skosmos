@@ -1,20 +1,46 @@
-# n40-skosmos
+# n4o-skosmos
 
-## Build and stop
+This git repository contains information on how to start a RDF triple store, fill it with data using the [n4o-graph-importer](https://github.com/nfdi4objects/n4o-graph-importer) and access the (J)SKOS-vocabularies using [Skosmos](https://github.com/NatLibFi/Skosmos).
 
-To start the container in the background run
+## Components
 
-    docker compose up -d
+A [Skosmos](https://github.com/NatLibFi/Skosmos) instance consisting of:
+- `skosmos-fuseki`: a RDF tiple store
+- `fuseki-cache`: a Varnish Cache container
+- `skosmos-web`: a web-based tool to access vocabularies
 
-To stop the container
+and an instance of:  
+- [n4o-graph-importer](https://github.com/nfdi4objects/n4o-graph-importer): scripts to import data into the triple store
 
-    docker compose down
+## Installation
 
-To reset the container
+First clone the repository and afterwards create the corresponding containers running in the background by running:
 
-    docker compose down -v
-    docker compose up --force-recreate
+~~~sh
+docker compose up -d
+~~~
 
-To update the locally cached Docker images:
+If locally cached containers already exist they can be updated using:
 
-    docker compose pull
+~~~sh
+docker compose pull
+~~~
+
+Running containers can be stopped by:
+
+~~~sh
+docker compose down
+~~~
+
+or stop and restarted with:
+
+~~~sh
+docker compose down -v
+docker compose up --force-recreate
+~~~
+
+## Usage
+
+The Skosmos web interface is by default accessable under <http://localhost:9090/> and the importer at <http://localhost:5020/>. 
+
+The skript `init.sh` registers the terminologies saved in `terminologies.json`, downloads the vocabularies from the given sources and adds them to the triple store using the importer. It furthermore extends the `config-docker-compose.ttl` with the vocabulary information to make the (J)SKOS-vocabularies accessable by SKOSMOS.
