@@ -32,7 +32,7 @@ Running containers can be stopped by:
 docker compose down
 ~~~
 
-or stop and restarted with:
+or stopped and restarted with:
 
 ~~~sh
 docker compose down -v
