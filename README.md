@@ -14,7 +14,13 @@ and an instance of:
 
 ## Installation
 
-First clone the repository and afterwards create the corresponding containers running in the background by running:
+First clone the repository. Before creating the docker containers it is necessary to provide a config file for Skosmos. This can be done by copying the default config file. To do this navigate to the repository root directory and run:
+
+~~~sh
+cp ./dockerfiles/config/config-docker-compose-default.ttl ./dockerfiles/config/config-docker-compose.ttl
+~~~
+
+Now the containers can be created running in the background with:
 
 ~~~sh
 docker compose up -d
@@ -43,4 +49,4 @@ docker compose up --force-recreate
 
 The Skosmos web interface is by default accessable under <http://localhost:9090/> and the importer at <http://localhost:5020/>. 
 
-The skript `init.sh` registers the terminologies saved in `terminologies.json`, downloads the vocabularies from the given sources and adds them to the triple store using the importer. It furthermore extends the `config-docker-compose.ttl` with the vocabulary information to make the (J)SKOS-vocabularies accessable by SKOSMOS.
+The skript `init.sh` takes a list of terminologies with their uri and a download link in [JSKOS format](https://gbv.github.io/jskos/), see `terminologies.json` for an example, as first argument and registers them. It downloads the vocabularies from the given sources and adds them to the triple store using the importer. Afterwards the skirpt extends the `config-docker-compose.ttl` with the vocabulary information to make the (J)SKOS-vocabularies accessable by SKOSMOS.
