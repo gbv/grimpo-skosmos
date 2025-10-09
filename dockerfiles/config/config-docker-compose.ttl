@@ -1,0 +1,105 @@
+@prefix void: <http://rdfs.org/ns/void#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dc: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix wv: <http://vocab.org/waiver/terms/norms> .
+@prefix sd: <http://www.w3.org/ns/sparql-service-description#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix skosmos: <http://purl.org/net/skosmos#> .
+@prefix isothes: <http://purl.org/iso25964/skos-thes#> .
+@prefix mdrtype: <http://publications.europa.eu/resource/authority/dataset-type/> .
+@prefix : <#> .
+
+# Skosmos main configuration
+
+:config a skosmos:Configuration ;
+    # SPARQL endpoint
+    # a local Fuseki server is usually on localhost:3030
+    skosmos:sparqlEndpoint <http://fuseki-cache:80/skosmos/sparql> ;
+    # sparql-query extension, or "Generic" for plain SPARQL 1.1
+    # set to "JenaText" instead if you use Fuseki with jena-text index
+    skosmos:sparqlDialect "JenaText" ;
+    # whether to enable collation in sparql queries
+    skosmos:sparqlCollationEnabled false ;
+    # HTTP client configuration
+    skosmos:sparqlTimeout 20 ;
+    skosmos:httpTimeout 5 ;
+    # customize the service name
+    skosmos:serviceName "Skosmos" ;
+    # customize the base element. Set this if the automatic base url detection doesn't work. For example setups behind a proxy.
+    # skosmos:baseHref "http://localhost/Skosmos/" ;
+    # interface languages available, and the corresponding system locales
+    skosmos:languages (
+        [ rdfs:label "ar" ; rdf:value "ar_AE.utf8" ]
+        [ rdfs:label "da" ; rdf:value "da_DK.utf8" ]
+        [ rdfs:label "de" ; rdf:value "de_DE.utf8" ]
+        [ rdfs:label "en" ; rdf:value "en_GB.utf8" ]
+        [ rdfs:label "en-US" ; rdf:value "en_US.utf8" ]
+        [ rdfs:label "es" ; rdf:value "es_ES.utf8" ]
+        [ rdfs:label "fa" ; rdf:value "fa_IR.utf8" ]
+        [ rdfs:label "fi" ; rdf:value "fi_FI.utf8" ]
+        [ rdfs:label "fr" ; rdf:value "fr_FR.utf8" ]
+        [ rdfs:label "it" ; rdf:value "it_IT.utf8" ]
+        [ rdfs:label "nb" ; rdf:value "nb_NO.utf8" ]
+        [ rdfs:label "nl" ; rdf:value "nl_NL.utf8" ]
+        [ rdfs:label "nn" ; rdf:value "nn_NO.utf8" ]
+        [ rdfs:label "pl" ; rdf:value "pl_PL.utf8" ]
+        [ rdfs:label "pt" ; rdf:value "pt_PT.utf8" ]
+        [ rdfs:label "pt-BR" ; rdf:value "pt_BR.utf8" ]
+        [ rdfs:label "ru" ; rdf:value "ru_RU.utf8" ]
+        [ rdfs:label "sv" ; rdf:value "sv_SE.utf8" ]
+        [ rdfs:label "zh" ; rdf:value "zh_CN.utf8" ]
+    ) ;
+    # how many results (maximum) to load at a time on the search results page
+    skosmos:searchResultsSize 20 ;
+    # how many items (maximum) to retrieve in transitive property queries
+    skosmos:transitiveLimit 1000 ;
+    # whether or not to log caught exceptions
+    skosmos:logCaughtExceptions false ;
+    # set to TRUE to enable logging into browser console
+    skosmos:logBrowserConsole false ;
+    # set to a logfile path to enable logging into log file
+    # skosmos:logFileName "" ;
+    # a default location for Twig template rendering
+    skosmos:templateCache "/tmp/skosmos-template-cache" ;
+    # customize the css by adding your own stylesheet
+    skosmos:customCss "resource/css/stylesheet.css" ;
+    # default email address where to send the feedback
+    skosmos:feedbackAddress "" ;
+    # email address to set as the sender for feedback messages
+    skosmos:feedbackSender "" ;
+    # email address to set as the envelope sender for feedback messages
+    skosmos:feedbackEnvelopeSender "" ;
+    # whether to display the ui language selection as a dropdown (useful for cases where there are more than 3 languages) 
+    skosmos:uiLanguageDropdown true ;
+    # whether to enable the spam honey pot or not, enabled by default
+    skosmos:uiHoneypotEnabled true ;
+    # default time a user must wait before submitting a form
+    skosmos:uiHoneypotTime 5 ;
+    # plugins to activate for the whole installation (including all vocabularies)
+    skosmos:globalPlugins () .
+
+# Skosmos vocabularies
+<https://graph.nfdi4objects.net/terminology/20533/stage/skosmos.ttl#20533> <http://purl.org/dc/terms/description> "Classification of materials used in KENOM portal."@en .
+<https://graph.nfdi4objects.net/terminology/20533/stage/skosmos.ttl#20533> <http://purl.org/dc/terms/subject> <http://dewey.info/class/737/e23/> .
+<https://graph.nfdi4objects.net/terminology/20533/stage/skosmos.ttl#20533> <http://purl.org/dc/terms/title> "KENOM Material"@en .
+<https://graph.nfdi4objects.net/terminology/20533/stage/skosmos.ttl#20533> <http://purl.org/net/skosmos#language> "de" .
+<https://graph.nfdi4objects.net/terminology/20533/stage/skosmos.ttl#20533> <http://purl.org/net/skosmos#language> "en" .
+<https://graph.nfdi4objects.net/terminology/20533/stage/skosmos.ttl#20533> <http://purl.org/net/skosmos#sparqlGraph> <http://bartoc.org/en/node/20533> .
+<https://graph.nfdi4objects.net/terminology/20533/stage/skosmos.ttl#20533> <http://rdfs.org/ns/void#uriSpace> "http://uri.gbv.de/terminology/kenom_material/" .
+<https://graph.nfdi4objects.net/terminology/20533/stage/skosmos.ttl#20533> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://purl.org/net/skosmos#Vocabulary> .
+<https://graph.nfdi4objects.net/terminology/20533/stage/skosmos.ttl#20533> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rdfs.org/ns/void#Dataset> .<https://graph.nfdi4objects.net/terminology/313/stage/skosmos.ttl#313> <http://purl.org/dc/terms/description> "\"Der Standard-Thesaurus Wirtschaft (STW) bildet das weltweit umfassendste bilinguale Fachvokabular zur Repräsentation und Recherche wirtschaftswissenschaftlicher Inhalte. Seine über 6.000 Schlagwörter in englischer und deutscher Sprache und mehr als 20.000 Synonymverweise decken alle ökonomischen Themenfelder und wichtigen benachbarten Sachgebiete ab. Der STW wird von der ZBW veröffentlicht und entsprechend den Veränderungen in der wirtschaftswissenschaftlichen Fachterminologie permanent weiterentwickelt.\n\nDer STW wird als allgemein nachnutzbares Begriffssystem weltweit von Universitäten, Forschungseinrichtungen, öffentlichen Institutionen und Unternehmen zur Wissensorganisation verwendet und für Forschung und Entwicklung in der Informatik, Informationswissenschaft und im Bereich Linked Data/Semantic Web eingesetzt. Der STW wurde als einer der ersten Thesauri in der Linked Open Data Cloud veröffentlicht und ist mit anderen Vokabularen über Mappings verknüpft. Er ist in vernetzte Informationsumgebungen und Web Services zur Aufbereitung und Verlinkung wirtschaftswissenschaftlicher Literatur, Forschungsdaten, Autorenprofile und Lernmaterialien eingebunden.\""@und .
+<https://graph.nfdi4objects.net/terminology/313/stage/skosmos.ttl#313> <http://purl.org/dc/terms/description> "\"The STW Thesaurus for Economics is the world's most comprehensive bilingual thesaurus for representing and searching for economics-related content. With more than 6,000 subject headings in English and German and more than 20,000 synonyms it covers all economics-related subject areas and, on a broader level, the most important related subject fields. The STW is published and continuously further developed by the ZBW according to the latest changes in the economic terminology.\n\nAs a generally re-usable concept system it is used by universities, research institutes, public institutions and companies for knowledge organization and for research and development in computer and information science as well as in the area of Linked Data and Semantic Web technologies. It has been published as one of the first thesauri in the Linked Open Data Cloud and is linked to other vocabularies through mappings. The STW is part of cross-linked information environments and web services for processing and linking economic literature, research data, author profiles and educational material.\""@en .
+<https://graph.nfdi4objects.net/terminology/313/stage/skosmos.ttl#313> <http://purl.org/dc/terms/subject> <http://dewey.info/class/3/e23/> .
+<https://graph.nfdi4objects.net/terminology/313/stage/skosmos.ttl#313> <http://purl.org/dc/terms/subject> <http://dewey.info/class/330/e23/> .
+<https://graph.nfdi4objects.net/terminology/313/stage/skosmos.ttl#313> <http://purl.org/dc/terms/title> "STW Thesaurus for Economics"@en .
+<https://graph.nfdi4objects.net/terminology/313/stage/skosmos.ttl#313> <http://purl.org/dc/terms/title> "Standard Thesaurus Wirtschaft"@de .
+<https://graph.nfdi4objects.net/terminology/313/stage/skosmos.ttl#313> <http://purl.org/net/skosmos#language> "de" .
+<https://graph.nfdi4objects.net/terminology/313/stage/skosmos.ttl#313> <http://purl.org/net/skosmos#language> "en" .
+<https://graph.nfdi4objects.net/terminology/313/stage/skosmos.ttl#313> <http://purl.org/net/skosmos#sparqlGraph> <http://bartoc.org/en/node/313> .
+<https://graph.nfdi4objects.net/terminology/313/stage/skosmos.ttl#313> <http://rdfs.org/ns/void#uriSpace> "http://zbw.eu/stw/descriptor/" .
+<https://graph.nfdi4objects.net/terminology/313/stage/skosmos.ttl#313> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://purl.org/net/skosmos#Vocabulary> .
+<https://graph.nfdi4objects.net/terminology/313/stage/skosmos.ttl#313> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://rdfs.org/ns/void#Dataset> .

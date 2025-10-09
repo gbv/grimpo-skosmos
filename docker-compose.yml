@@ -1,0 +1,52 @@
+services:
+  fuseki:
+    hostname: fuseki
+    build:
+      context: ./dockerfiles/jena-fuseki2-docker
+      dockerfile: Dockerfile
+      args:
+        JENA_VERSION: 5.4.0
+    command: --config=/fuseki/skosmos.ttl
+    environment:
+      - JAVA_OPTIONS=-Xmx2g -Xms1g
+    ports:
+      - ${FUSEKI_PORT:-3030}:3030
+    volumes:
+      # You can uncomment the lines below to persist data used in the
+      # container. For more complete documentation about it, please
+      # consult the official Apache Jena docs at
+      # https://github.com/apache/jena/tree/main/jena-fuseki2/jena-fuseki-docker
+      # - ./dockerfiles/databases:/fuseki/databases
+      # - ./dockerfiles/logs:/fuseki/logs
+      - ./dockerfiles/config/skosmos.ttl:/fuseki/skosmos.ttl
+    user: 'fuseki:fuseki'
+  fuseki-cache:
+    hostname: fuseki-cache
+    image: varnish
+    security_opt:
+      - seccomp:unconfined
+    ports:
+      - ${CACHE_PORT:-9031}:80
+    volumes:
+      - type: bind
+        source: ./dockerfiles/config/varnish-default.vcl
+        target: /etc/varnish/default.vcl
+  skosmos:
+    hostname: skosmos
+    image: quay.io/natlibfi/skosmos
+    ports:
+      - ${SKOSMOS_PORT:-9090}:80
+    volumes:
+      - type: bind
+        source: ./dockerfiles/config/config-docker-compose.ttl
+        target: /var/www/html/config.ttl
+  importer:
+    image: ghcr.io/nfdi4objects/n4o-graph-importer:main
+    ports:
+      - ${IMPORT:-5020}:5020
+    volumes:
+      - ${STAGE:-./stage}:/app/stage
+      - ${DATA:-./data}:/app/data:ro
+    environment:
+      - SPARQL=http://fuseki:3030/skosmos
+  

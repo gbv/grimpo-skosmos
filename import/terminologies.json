@@ -1,0 +1,16 @@
+[
+  {
+    "uri": "http://bartoc.org/en/node/20533",
+    "prefLabel": {
+      "en": "KENOM Material"
+    },
+    "distribution":[{"download": "https://api.dante.gbv.de/export/download/kenom_material/default/kenom_material__default.jskos.ndjson"}]
+  },
+  {
+    "uri": "http://bartoc.org/en/node/313",
+    "prefLabel": {
+      "en": "STW Thesaurus for Economics"
+    },
+    "distribution":[{"download": "http://zbw.eu/stw/version/latest/download/stw.ttl.zip"}]
+  }
+]
