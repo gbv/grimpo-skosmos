@@ -19,7 +19,7 @@ and an instance of:
 First clone the repository. Before creating the docker containers it is necessary to provide a config file for Skosmos. This can be done by copying the default config file. To do this navigate to the repository root directory and run:
 
 ~~~sh
-cp ./dockerfiles/config/config-docker-compose-default.ttl ./dockerfiles/config/config-docker-compose.ttl
+make
 ~~~
 
 Now the containers can be created running in the background with:
