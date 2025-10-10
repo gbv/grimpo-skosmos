@@ -1,6 +1,8 @@
-# n4o-skosmos
+# grimpo-skosmos
 
-This repository contains scripts to start a RDF triple store, fill it with data using the [n4o-graph-importer](https://github.com/nfdi4objects/n4o-graph-importer) and access the (J)SKOS-vocabularies using [Skosmos](https://github.com/NatLibFi/Skosmos).
+> Knowledge Graph importer for Skosmos 
+
+This repository contains scripts to start a RDF triple store, fill it with data using the [n4o-graph-importer](https://github.com/nfdi4objects/n4o-graph-importer) and access the vocabularies using [Skosmos](https://github.com/NatLibFi/Skosmos).
 
 ## Components
 
