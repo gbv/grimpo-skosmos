@@ -6,7 +6,7 @@ services:
       dockerfile: Dockerfile
       args:
         JENA_VERSION: 5.4.0
-    command: --config=/fuseki/skosmos.ttl
+    command: --config=/fuseki/fuseki.ttl
     environment:
       - JAVA_OPTIONS=-Xmx2g -Xms1g
     ports:
@@ -18,7 +18,7 @@ services:
       # https://github.com/apache/jena/tree/main/jena-fuseki2/jena-fuseki-docker
       # - ./dockerfiles/databases:/fuseki/databases
       # - ./dockerfiles/logs:/fuseki/logs
-      - ./dockerfiles/config/skosmos.ttl:/fuseki/skosmos.ttl
+      - ./dockerfiles/config/fuseki.ttl:/fuseki/fuseki.ttl
     user: 'fuseki:fuseki'
   fuseki-cache:
     hostname: fuseki-cache
