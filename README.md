@@ -2,17 +2,17 @@
 
 > Knowledge Graph importer for Skosmos 
 
-This repository contains scripts to start a RDF triple store, fill it with data using the [n4o-graph-importer](https://github.com/nfdi4objects/n4o-graph-importer) and access the vocabularies using [Skosmos](https://github.com/NatLibFi/Skosmos).
+This repository contains scripts to start a RDF triple store, fill it with data using [n4o-graph-importer](https://github.com/nfdi4objects/n4o-graph-importer) and access the vocabularies using [Skosmos].
 
 ## Components
 
-A [Skosmos](https://github.com/NatLibFi/Skosmos) instance consisting of:
+A [Skosmos] instance consisting of:
 - `skosmos-fuseki`: a RDF tiple store
 - `fuseki-cache`: a Varnish Cache container
 - `skosmos-web`: a web-based tool to access vocabularies
 
 and an instance of:
-- [n4o-graph-importer]: scripts to import data into the triple store
+- [n4o-graph-importer]: a web service to import data into the triple store, in particular vocabularies described in [BARTOC], in SKOS and [JSKOS] format
 
 ## Installation
 
@@ -51,6 +51,13 @@ docker compose up --force-recreate
 
 The Skosmos web interface is by default accessable under <http://localhost:9090/> and the importer at <http://localhost:5020/>. 
 
-The skript `init.sh` takes a JSON file listing terminologies, each with their BARTOC URI (`uri`) and a download link (`distributions[0].download`). See [`terminologies.json`](terminologies.json) for an example and [JSKOS format](https://gbv.github.io/jskos/) for reference. The script registers each terminology using [n4o-graph-importer] and passes the download link to download and add it to the triple store. Afterwards the skript updates Skosmos configuration in `config-docker-compose.ttl` to make terminologies accessible via Skosmos.
+The skript `init.sh` takes a JSON file listing terminologies, each with their BARTOC URI (`uri`) and a download link (`distributions[0].download`). See [`terminologies.json`](terminologies.json) for an example and [JSKOS] for reference. The script registers each terminology using [n4o-graph-importer] and passes the download link to download and add it to the triple store. Afterwards the skript updates Skosmos configuration in `config-docker-compose.ttl` to make terminologies accessible via Skosmos.
 
+## License
+
+MIT license
+
+[Skosmos]: https://github.com/NatLibFi/Skosmos
+[BARTOC]: https://bartoc.org/
+[JSKOS]: https://gbv.github.io/jskos/
 [n4o-graph-importer]: https://github.com/nfdi4objects/n4o-graph-importer
