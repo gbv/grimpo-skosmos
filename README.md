@@ -57,6 +57,8 @@ The skript `import-terminologies.sh` takes a JSON file listing terminologies, ea
 
 It is also possible to register and add individual terminologies using `import-terminologies.sh`. To do so the skript takes both the BARTOC URI and a download link, in this order, as arguments. The new terminology will be register and added to the triple store and the Skosmos config.
 
+Skosmos configuration is updated after each import. This update can also be triggered without import by passing a file with an empty JSON array.
+
 ## License
 
 MIT license
