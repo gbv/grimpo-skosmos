@@ -38,7 +38,7 @@ services:
       - ${SKOSMOS_PORT:-9090}:80
     volumes:
       - type: bind
-        source: ./dockerfiles/config/config-docker-compose.ttl
+        source: ./dockerfiles/config/skosmos.ttl
         target: /var/www/html/config.ttl
   importer:
     image: ghcr.io/nfdi4objects/n4o-graph-importer:main

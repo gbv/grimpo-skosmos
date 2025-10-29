@@ -16,7 +16,7 @@ and an instance of:
 
 ## Installation
 
-First clone the repository. Before creating the docker containers it is necessary to provide a config file for Skosmos. This can be done by copying the default config file. To do this navigate to the repository root directory and run:
+First clone the repository. Before creating the docker containers it is necessary to provide a config file for Skosmos at `dockerfiles/config/skosmos.ttl`. This can be done by copying the default config file. To do so, navigate to the repository root directory and run:
 
 ~~~sh
 make
@@ -51,7 +51,7 @@ docker compose up --force-recreate
 
 The Skosmos web interface is by default accessable under <http://localhost:9090/> and the importer at <http://localhost:5020/>. 
 
-The skript `import-terminologies.sh` takes a JSON file listing terminologies, each with their BARTOC URI (`uri`) and a download link (`distributions[0].download`). See [`terminologies.json`](terminologies.json) for an example and [JSKOS] for reference. The script registers each terminology using [n4o-graph-importer] and passes the download link to download and add it to the triple store. Afterwards the skript updates Skosmos configuration in `config-docker-compose.ttl` to make terminologies accessible via Skosmos.
+The skript `import-terminologies.sh` takes a JSON file listing terminologies, each with their BARTOC URI (`uri`) and a download link (`distributions[0].download`). See [`terminologies.json`](terminologies.json) for an example and [JSKOS] for reference. The script registers each terminology using [n4o-graph-importer] and passes the download link to download and add it to the triple store. Afterwards the skript updates Skosmos configuration in `skosmos.ttl` to make terminologies accessible via Skosmos.
 
 It is also possible to register and add individual terminologies using `import-terminologies.sh`. To do so the skript takes both the BARTOC URI and a download link, in this order, as arguments. The new terminology will be register and added to the triple store and the Skosmos config.
 

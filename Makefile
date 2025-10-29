@@ -1,2 +1,2 @@
-dockerfiles/config/config-docker-compose.ttl: dockerfiles/config/config-docker-compose-default.ttl
+dockerfiles/config/skosmos.ttl: dockerfiles/config/skosmos-default.ttl
 	cp $< $@

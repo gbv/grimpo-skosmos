@@ -4,8 +4,8 @@ set -euo pipefail
 importer=http://localhost:5020/
 DATA=${DATA:-data}
 STAGE=${STAGE:-stage}
-DEFAULT="./dockerfiles/config/config-docker-compose-default.ttl"
-CONFIG="./dockerfiles/config/config-docker-compose.ttl"
+DEFAULT="./dockerfiles/config/skosmos-default.ttl"
+CONFIG="./dockerfiles/config/skosmos.ttl"
 
 POST() { curl --silent --fail -X POST "$@"; }
 PUT() { curl --silent --fail -X PUT "$@"; }
