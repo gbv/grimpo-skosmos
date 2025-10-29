@@ -28,6 +28,8 @@ Now the containers can be created running in the background with:
 docker compose up -d
 ~~~
 
+Then import terminologies as [described below](#usage).
+
 If locally cached containers already exist they can be updated using:
 
 ~~~sh
