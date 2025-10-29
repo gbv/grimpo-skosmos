@@ -2,7 +2,7 @@
 
 > Knowledge Graph importer for Skosmos 
 
-This repository contains scripts to start a RDF triple store, fill it with data using [n4o-graph-importer](https://github.com/nfdi4objects/n4o-graph-importer) and access the vocabularies using [Skosmos].
+This repository contains scripts to start a RDF triple store, fill it with data using [n4o-graph-importer](https://github.com/nfdi4objects/n4o-graph-importer) (aka *grimpo*) and access the vocabularies using [Skosmos].
 
 ## Components
 
