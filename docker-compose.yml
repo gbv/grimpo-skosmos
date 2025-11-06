@@ -49,4 +49,12 @@ services:
       - ${DATA:-./data}:/app/data:ro
     environment:
       - SPARQL=http://fuseki:3030/skosmos
-  
+  apis:
+    image: ghcr.io/nfdi4objects/n4o-graph-apis:main
+    ports:
+      - ${PORT:-8000}:8000
+    volumes:
+      - ./config-apis.yml:/app/config.yaml:ro
+      - ${STAGE:-./stage}:/app/stage:ro
+    environment:
+      - SPARQL=http://fuseki:3030/skosmos

@@ -1,0 +1,5 @@
+# SPARQL endpoint and examples (required)
+sparql:
+  # TODO: config via env $SPARQL instead
+  endpoint: http://fuseki:3030/skosmos
+  examples: []

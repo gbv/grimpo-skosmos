@@ -13,6 +13,7 @@ A [Skosmos] instance consisting of:
 
 and an instance of:
 - [n4o-graph-importer]: a web service to import data into the triple store, in particular vocabularies described in [BARTOC], in SKOS and [JSKOS] format
+- [n4o-graph-apis]: web interface for SPARQL queries
 
 ## Installation
 
@@ -51,7 +52,7 @@ docker compose up --force-recreate
 
 ## Usage
 
-The Skosmos web interface is made accessible at <http://localhost:9090/>, the importer at <http://localhost:5020/>, and Fuseki at <http://localhost:3030/>. 
+The Skosmos web interface is made accessible at <http://localhost:9090/>, the importer at <http://localhost:5020/>, Fuseki at <http://localhost:3030/>, and SPARQL web interface at <http://localhost:8000>. 
 
 The skript `import-terminologies.sh` takes a JSON file listing terminologies, each with their BARTOC URI (`uri`) and a download link (`distributions[0].download`). See [`terminologies.json`](terminologies.json) for an example and [JSKOS] for reference. The script registers each terminology using [n4o-graph-importer] and passes the download link to download and add it to the triple store. Afterwards the skript updates Skosmos configuration in `skosmos.ttl` to make terminologies accessible via Skosmos.
 
@@ -67,3 +68,4 @@ MIT license
 [BARTOC]: https://bartoc.org/
 [JSKOS]: https://gbv.github.io/jskos/
 [n4o-graph-importer]: https://github.com/nfdi4objects/n4o-graph-importer
+[n4o-graph-apis]: https://github.com/nfdi4objects/n4o-graph-apis
