@@ -51,7 +51,7 @@ docker compose up --force-recreate
 
 ## Usage
 
-The Skosmos web interface is by default accessable under <http://localhost:9090/> and the importer at <http://localhost:5020/>. 
+The Skosmos web interface is made accessible at <http://localhost:9090/>, the importer at <http://localhost:5020/>, and Fuseki at <http://localhost:3030/>. 
 
 The skript `import-terminologies.sh` takes a JSON file listing terminologies, each with their BARTOC URI (`uri`) and a download link (`distributions[0].download`). See [`terminologies.json`](terminologies.json) for an example and [JSKOS] for reference. The script registers each terminology using [n4o-graph-importer] and passes the download link to download and add it to the triple store. Afterwards the skript updates Skosmos configuration in `skosmos.ttl` to make terminologies accessible via Skosmos.
 

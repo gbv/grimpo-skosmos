@@ -46,5 +46,7 @@ else
     import $TERMINOLOGIES
 fi
 
+echo
+echo "## Update Skosmos configuration"
 GET ${importer}terminology/skosmos.ttl >> $CONFIG
 
